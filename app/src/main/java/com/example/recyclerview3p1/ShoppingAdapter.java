@@ -18,9 +18,9 @@ import java.util.LinkedList;
 public class ShoppingAdapter extends RecyclerView.Adapter<ShoppingAdapter.ProductViewHolder>{
 
     private LayoutInflater inflater;
-    private final LinkedList<String> listaZakupow;
+    private final LinkedList<Product> listaZakupow;
 
-    public ShoppingAdapter(Context context, LinkedList<String> listaZakupow) {
+    public ShoppingAdapter(Context context, LinkedList<Product> listaZakupow) {
         inflater = LayoutInflater.from(context);
         this.listaZakupow = listaZakupow;
     }
@@ -34,11 +34,12 @@ public class ShoppingAdapter extends RecyclerView.Adapter<ShoppingAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        holder.productItemView.setText(listaZakupow.get(position));
+        holder.productItemView.setText(listaZakupow.get(position).getNazwa());
         holder.productItemView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(holder.productItemView.isChecked()){
+                    //TODO: zmienić własność czyZaznaczony w Product
                     holder.productItemView.setPaintFlags(
                             holder.productItemView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG
                     );
@@ -56,7 +57,7 @@ public class ShoppingAdapter extends RecyclerView.Adapter<ShoppingAdapter.Produc
     public int getItemCount() {
         return listaZakupow.size();
     }
-    public void dodajProduktDoListy(String produkt){
+    public void dodajProduktDoListy(Product produkt){
         listaZakupow.addLast(produkt);
         notifyDataSetChanged();
     }
@@ -75,9 +76,9 @@ public class ShoppingAdapter extends RecyclerView.Adapter<ShoppingAdapter.Produc
         @Override
         public void onClick(View v) {
             int shoppingPosition = getLayoutPosition();
-            String prod = listaZakupow.get(shoppingPosition);
+            String prod = listaZakupow.get(shoppingPosition).getNazwa();
             prod = "Kupione "+prod;
-            listaZakupow.set(shoppingPosition,prod);
+            //listaZakupow.set(shoppingPosition,prod);
             //TODO: zrobić żeby po drugim kliknięciu nie dopisywało się kupione
             shoppingAdapter.notifyDataSetChanged();
             Toast.makeText(inflater.getContext(), prod, Toast.LENGTH_SHORT).show();

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
-    LinkedList <String> produkty = new LinkedList<>();
+    LinkedList <Product> produkty = new LinkedList<>();
     private RecyclerView shoppingRecyclerView;
     private ShoppingAdapter adapter;
     @Override
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //TODO: sprawdz czy pole edycyjne jest wypełnione
-                        String dodawanyProdukt = editText.getText().toString();
+                        Product dodawanyProdukt = new Product(editText.getText().toString());
                         //dodać do listy w adapterze
                         adapter.dodajProduktDoListy(dodawanyProdukt);
                         editText.setText("");
@@ -41,20 +41,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void  wypelnijListe(){
-        produkty.addLast("jabłka");
-        produkty.addLast("gruszki");
-        produkty.addLast("sliwki");
-        produkty.addLast("mleko");
-        produkty.addLast("jajka");
-        produkty.addLast("woda");
-        produkty.addLast("mąka");
-        produkty.addLast("pomidory");
-        produkty.addLast("kabanosy");
-        produkty.addLast("ser");
-        produkty.addLast("sól");
-        produkty.addLast("masło");
-        produkty.addLast("czekolada");
-        produkty.addLast("chleb");
-        produkty.addLast("bułki");
+        produkty.addLast(new Product("jabłka"));
+        produkty.addLast(new Product("gruszki"));
+        produkty.addLast(new Product("sliwki"));
+        produkty.addLast(new Product("mleko"));
+        produkty.addLast(new Product("jajka"));
+        produkty.addLast(new Product("woda"));
+        produkty.addLast(new Product("mąka"));
+        produkty.addLast(new Product("pomidory"));
+        produkty.addLast(new Product("kabanosy"));
+        produkty.addLast(new Product("ser"));
+        produkty.addLast(new Product("sól"));
+        produkty.addLast(new Product("masło"));
+        produkty.addLast(new Product("czekolada"));
+        produkty.addLast(new Product("chleb"));
+        produkty.addLast(new Product("bułki"));
     }
 }
