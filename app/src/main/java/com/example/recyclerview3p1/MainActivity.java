@@ -4,11 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.LinkedList;
 
+public class MainActivity extends AppCompatActivity {
+    LinkedList <String> produkty = new LinkedList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        wypelnijListe();
+    }
+
+    private void  wypelnijListe(){
+        produkty.addLast("jabłka");
+        produkty.addLast("gruszki");
+        produkty.addLast("sliwki");
+        produkty.addLast("mleko");
+        produkty.addLast("jajka");
+        produkty.addLast("woda");
+        produkty.addLast("mąka");
+        produkty.addLast("pomidory");
+        produkty.addLast("kabanosy");
+        produkty.addLast("ser");
+        produkty.addLast("sól");
+        produkty.addLast("masło");
+        produkty.addLast("czekolada");
+        produkty.addLast("chleb");
+        produkty.addLast("bułki");
     }
 }
